@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — angel.ad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deepblue: #344979;
+            --periwinkle: #5d6da5;
+            --lavender: #9896bb;
+            --pale-lavender: #c6c6e8;
+            --blush: #f7e5eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(180deg, var(--lavender) 0%, var(--pale-lavender) 100%);
+            color: var(--deepblue);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background elements - clouds */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.3;
+            animation: cloudFloat 25s infinite ease-in-out;
+        }
+
+        /* Cloud shapes using border-radius */
+        .shape-1 {
+            width: 200px;
+            height: 80px;
+            background: white;
+            border-radius: 100px;
+            top: 15%;
+            left: -100px;
+            animation-delay: 0s;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .shape-1::before,
+        .shape-1::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .shape-1::before {
+            width: 80px;
+            height: 80px;
+            top: -40px;
+            left: 30px;
+        }
+
+        .shape-1::after {
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            right: 30px;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 70px;
+            background: white;
+            border-radius: 100px;
+            top: 60%;
+            right: -90px;
+            animation-delay: -8s;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .shape-2::before,
+        .shape-2::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .shape-2::before {
+            width: 70px;
+            height: 70px;
+            top: -35px;
+            left: 25px;
+        }
+
+        .shape-2::after {
+            width: 90px;
+            height: 90px;
+            top: -45px;
+            right: 25px;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 60px;
+            background: white;
+            border-radius: 100px;
+            bottom: 25%;
+            left: 10%;
+            animation-delay: -15s;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .shape-3::before,
+        .shape-3::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .shape-3::before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .shape-3::after {
+            width: 75px;
+            height: 75px;
+            top: -38px;
+            right: 20px;
+        }
+
+        @keyframes cloudFloat {
+            0%, 100% {
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                transform: translateX(100px) translateY(-20px);
+            }
+            50% {
+                transform: translateX(50px) translateY(20px);
+            }
+            75% {
+                transform: translateX(150px) translateY(-10px);
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Whimsical Navbar */
+        .navbar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(198, 198, 232, 0.15));
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 1001;
+        }
+
+        .nav-item {
+            color: var(--deepblue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-item:hover {
+            color: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blush);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .nav-bag {
+            position: relative;
+            color: var(--deepblue);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-bag:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(247, 229, 235, 0.5);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--deepblue);
+            color: var(--blush);
+            padding: 1.25rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(52, 73, 121, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--periwinkle);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(52, 73, 121, 0.4);
+        }
+
+        /* ============================================
+           ABOUT PAGE STYLES
+           ============================================ */
+
+        /* About Container */
+        .about-container {
+            padding-top: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Badge */
+        .section-badge {
+            background: linear-gradient(135deg, var(--deepblue), var(--periwinkle));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(52, 73, 121, 0.3);
+        }
+
+        /* About Product Section */
+        .about-product-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .about-hero-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--deepblue);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            margin-bottom: 4rem;
+        }
+
+        /* 3D Carousel Container */
+        .carousel-3d-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .carousel-3d-stage {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            perspective: 1200px;
+            perspective-origin: center center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        /* 3D Carousel Card */
+        .carousel-3d-card {
+            position: absolute;
+            width: 300px;
+            min-height: 400px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+        }
+
+        /* Card Positions - 3 visible at once */
+        .carousel-3d-card[data-position="0"] { /* Center */
+            transform: translateX(0) translateZ(0) scale(1);
+            z-index: 3;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .carousel-3d-card[data-position="1"] { /* Right */
+            transform: translateX(350px) translateZ(-100px) scale(0.85);
+            z-index: 2;
+            opacity: 0.6;
+            pointer-events: all;
+        }
+
+        .carousel-3d-card[data-position="4"] { /* Left */
+            transform: translateX(-350px) translateZ(-100px) scale(0.85);
+            z-index: 2;
+            opacity: 0.6;
+            pointer-events: all;
+        }
+
+        .carousel-3d-card[data-position="2"] { /* Hidden behind right */
+            transform: translateX(700px) translateZ(-200px) scale(0.7);
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .carousel-3d-card[data-position="3"] { /* Hidden behind left */
+            transform: translateX(-700px) translateZ(-200px) scale(0.7);
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card-3d-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(198, 198, 232, 0.3));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 60px rgba(52, 73, 121, 0.2);
+            overflow: hidden;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-3d-card:hover:not(.expanded-3d) .card-3d-content {
+            border-color: var(--periwinkle);
+            box-shadow: 0 25px 70px rgba(93, 109, 165, 0.3);
+        }
+
+        /* Collapsed State */
+        .card-3d-collapsed {
+            padding: 3rem 2rem;
+            text-align: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-3d-card.expanded-3d .card-3d-collapsed {
+            display: none;
+        }
+
+        .card-3d-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-3d-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--deepblue);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .card-3d-preview {
+            font-size: 0.95rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* Expanded State */
+        .card-3d-expanded {
+            display: none;
+            padding: 2.5rem;
+            animation: fadeIn 0.4s ease;
+            height: auto;
+            min-height: 500px;
+        }
+
+        .carousel-3d-card.expanded-3d {
+            width: 750px;
+            min-height: 500px;
+            z-index: 100 !important;
+        }
+
+        .carousel-3d-card.expanded-3d .card-3d-content {
+            /* More opaque "glass" + timeless white→lavender corner gradient */
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.995) 0%,
+                rgba(255, 255, 255, 0.985) 55%,
+                rgba(198, 198, 232, 0.65) 100%
+            );
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+        }
+
+        .carousel-3d-card.expanded-3d .card-3d-expanded {
+            display: block;
+        }
+
+        .card-3d-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--blush);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--deepblue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .card-3d-close:hover {
+            background: var(--pale-lavender);
+            transform: rotate(90deg);
+        }
+
+        .expanded-3d-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .expanded-3d-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--deepblue);
+            margin-bottom: 1.5rem;
+        }
+
+        .expanded-3d-text p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--deepblue);
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .expanded-3d-text h4 {
+            font-size: 1.1rem;
+            color: var(--deepblue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Quote Card in 3D */
+        .quote-card-3d {
+            background: linear-gradient(135deg, var(--periwinkle), var(--lavender));
+            padding: 1.75rem;
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            height: fit-content;
+        }
+
+        .quote-icon-3d {
+            font-size: 3.5rem;
+            font-family: 'DM Serif Display', serif;
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1.25rem;
+        }
+
+        .quote-text-3d {
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author-3d {
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.9;
+            text-align: right;
+        }
+
+        .media-photo-3d {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 0.75rem;
+        }
+
+        .media-caption-3d {
+            font-size: 0.8rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Navigation Buttons */
+        .carousel-3d-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .carousel-3d-nav {
+            background: var(--deepblue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 73, 121, 0.3);
+        }
+
+        .carousel-3d-nav:hover {
+            background: var(--periwinkle);
+            transform: scale(1.08);
+        }
+
+        /* Management Section */
+        .management-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .management-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--deepblue);
+            margin-bottom: 0.5rem;
+        }
+
+        .management-subtitle {
+            font-size: 1.1rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Manager Panels */
+        .managers-panels {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .manager-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(198, 198, 232, 0.2));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 60px rgba(52, 73, 121, 0.15);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            transition: all 0.4s ease;
+        }
+
+        .manager-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(93, 109, 165, 0.25);
+        }
+
+        .manager-photo-section {
+            background: linear-gradient(135deg, var(--periwinkle), var(--lavender));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .manager-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .manager-details {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .manager-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--pale-lavender);
+        }
+
+        .manager-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--deepblue);
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-role {
+            font-size: 0.9rem;
+            color: var(--periwinkle);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .manager-title-sub {
+            font-size: 0.85rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            font-weight: 600;
+        }
+
+        .manager-badge-label {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: var(--deepblue);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .manager-bio {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--deepblue);
+            opacity: 0.85;
+        }
+
+        .manager-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(93, 109, 165, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(93, 109, 165, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .stat-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--periwinkle);
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        /* Management Disclaimer */
+        .management-disclaimer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(247, 229, 235, 0.5);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--deepblue);
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* About CTA Section */
+        .about-cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Responsive - About Page */
+        @media (max-width: 968px) {
+            .navbar {
+                gap: 1.5rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .nav-item {
+                font-size: 0.85rem;
+            }
+
+            .nav-bag {
+                font-size: 1.1rem;
+                width: 35px;
+                height: 35px;
+            }
+
+            .carousel-3d-container {
+                padding: 0;
+            }
+
+            .carousel-3d-card {
+                width: 260px;
+                min-height: 350px;
+            }
+
+            .carousel-3d-stage {
+                height: 500px;
+            }
+
+            .carousel-3d-card[data-position="1"] {
+                transform: translateX(280px) translateZ(-100px) scale(0.8);
+            }
+
+            .carousel-3d-card[data-position="4"] {
+                transform: translateX(-280px) translateZ(-100px) scale(0.8);
+            }
+
+            .carousel-3d-card[data-position="2"] {
+                transform: translateX(560px) translateZ(-200px) scale(0.7);
+            }
+
+            .carousel-3d-card[data-position="3"] {
+                transform: translateX(-560px) translateZ(-200px) scale(0.7);
+            }
+
+            .carousel-3d-card.expanded-3d {
+                width: 90%;
+                max-width: 500px;
+            }
+
+            .expanded-3d-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card-3d-collapsed {
+                padding: 2rem 1.5rem;
+                height: 350px;
+            }
+
+            .card-3d-icon {
+                font-size: 3.5rem;
+            }
+
+            .card-3d-title {
+                font-size: 1.5rem;
+            }
+
+            .carousel-3d-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+            }
+
+            .manager-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .manager-photo-section {
+                min-height: 300px;
+            }
+
+            .manager-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Whimsical Navbar -->
+   <nav class="navbar">
+        <a href="home.html" class="nav-item">Best Seller</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="#support" class="nav-item">Support</a>
+        <a href="contact.html" class="nav-item">Checkout</a>
+    </nav>
+
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container about-container">
+        <!-- About the Product Section -->
+        <section class="about-product-section">
+            <div class="section-badge">📦 Product Specifications</div>
+            
+            <h1 class="about-hero-title">About the <span class="highlight">Product</span></h1>
+            <p class="about-hero-subtitle">A little more about Angel(a)! </p>
+
+            <!-- 3D Carousel Container -->
+            <div class="carousel-3d-container">
+                <div class="carousel-3d-stage">
+                    <!-- Card 1: Who I Am -->
+                    <div class="carousel-3d-card" data-position="0" onclick="selectCard(this, 0)">
+                        <div class="card-3d-content">
+                            <div class="card-3d-collapsed">
+                                <div class="card-3d-icon">🌟</div>
+                                <h3 class="card-3d-title">Who I Am</h3>
+                                <p class="card-3d-preview">The person that is the product</p>
+                            </div>
+                            <div class="card-3d-expanded">
+                                <button class="card-3d-close" onclick="event.stopPropagation(); collapseCard3D()">×</button>
+                                <div class="expanded-3d-layout">
+                                    <div class="expanded-3d-text">
+                                        <h3 class="expanded-3d-title">🌟 Who I Am</h3>
+                                        <p>Hey! I am Angela, the 'product' of this page. I hope it has been fun so far exploring around this website. I love creating fun and engaging websites for various occasions and audiences as it helps me channel my creativity and passion for design and user experience. I also just love creating things! I find myself crocheting anything that I may need in my daily life, or something my friends needed. I love baking and exploring new flavors that tie into my chinese roots. Looking forward to getting a 3d printing machine next... then I can't be stopped at all.</p>
+                                        <p>I truly do think my passion for creating things is what drew me to Product Management. Truth be told, my coding skills are limited (though I am constantly pushing my html/css limits creating these fun little websites), and tech products that improve lives are what I strive to build. Since I can't be a developer, I make sure to be a great product manager and advocate for the user experience when building out these products.</p>
+                                    </div>
+                                    <div class="expanded-3d-media">
+                                        <div class="quote-card-3d">
+                                            <div class="quote-icon-3d">"</div>
+                                            <p class="quote-text-3d">“If you don’t see a clear path for what you want, sometimes you have to make it yourself.”</p>
+                                            <p class="quote-author-3d">— Mindy Kaling</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Outside Office Hours -->
+                    <div class="carousel-3d-card" data-position="1" onclick="selectCard(this, 1)">
+                        <div class="card-3d-content">
+                            <div class="card-3d-collapsed">
+                                <div class="card-3d-icon">🎨</div>
+                                <h3 class="card-3d-title">Outside Office Hours</h3>
+                                <p class="card-3d-preview">Life beyond the desk</p>
+                            </div>
+                            <div class="card-3d-expanded">
+                                <button class="card-3d-close" onclick="event.stopPropagation(); collapseCard3D()">×</button>
+                                <div class="expanded-3d-layout">
+                                    <div class="expanded-3d-text">
+                                        <h3 class="expanded-3d-title">🎨 Outside Office Hours</h3>
+                                        <p>Outside of work, outside of creating through various mediums, I enjoy going on hikes, playing video games, and spending quality time with my family and friends.</p>
+                                        <p>Though these are things that I enjoy outside of work, I do find that each activity ties into how I approach my work. While hiking, I see what the world has created naturally, how plants or animals have adapted to better survive in their environments. Gaming helps me think strategically, look at the team and how to proceed from the skills we have to achieve a goal. </p>
+                                    </div>
+                                    <div class="expanded-3d-media">
+                                        <img src="mango.jpg" alt="Hobbies" class="media-photo-3d">
+                                        <p class="media-caption-3d">Mango Oolong Tea Tiramisu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: How I Got Here -->
+                    <div class="carousel-3d-card" data-position="2" onclick="selectCard(this, 2)">
+                        <div class="card-3d-content">
+                            <div class="card-3d-collapsed">
+                                <div class="card-3d-icon">🚀</div>
+                                <h3 class="card-3d-title">How I Got Here</h3>
+                                <p class="card-3d-preview">The journey from then to now</p>
+                            </div>
+                            <div class="card-3d-expanded">
+                                <button class="card-3d-close" onclick="event.stopPropagation(); collapseCard3D()">×</button>
+                                <div class="expanded-3d-layout">
+                                    <div class="expanded-3d-text">
+                                        <h3 class="expanded-3d-title">🚀 How I Got Here</h3>
+                                        <p>It first started when I joined Exia Labs as a research analyst. Due to the small team size and the nature of the work, I was able to take on multiple roles and responsibilities. This experience helped me develop a strong foundation in product management and gave me the confidence to pursue more advanced roles in product development.</p>
+                                    </div>
+                                    <div class="expanded-3d-media">
+                                        <div class="quote-card-3d">
+                                            <div class="quote-icon-3d">"</div>
+                                            <p class="quote-text-3d">“I am learning every day to allow the space between where I am and where I want to be to inspire me and not terrify me.”</p>
+                                            <p class="quote-author-3d">— Tracee Ellis Ross</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Educational Background -->
+                    <div class="carousel-3d-card" data-position="3" onclick="selectCard(this, 3)">
+                        <div class="card-3d-content">
+                            <div class="card-3d-collapsed">
+                                <div class="card-3d-icon">🎓</div>
+                                <h3 class="card-3d-title">Educational Background</h3>
+                                <p class="card-3d-preview">The foundation of knowledge</p>
+                            </div>
+                            <div class="card-3d-expanded">
+                                <button class="card-3d-close" onclick="event.stopPropagation(); collapseCard3D()">×</button>
+                                <div class="expanded-3d-layout">
+                                    <div class="expanded-3d-text">
+                                        <h3 class="expanded-3d-title">🎓 Educational Background</h3>
+                                        <h4>University of California, Riverside</h4>
+                                        <p><strong>Degree:</strong> Bachelor's of Science in Neuroscience</p>
+
+                                        <h4 style="margin-top: 1rem;">Certifications</h4>
+                                        <p>Agile Project Management Certification @ Google</p>
+                                        <p>Agile Foundations Certification @ LinkedIn</p>
+                                        <p>Intro to Machine Learning @ Kaggle</p>
+                                        <p>Responsive Web Design Certification @ FreeCodeCamp</p>
+                                    </div>
+                                    <div class="expanded-3d-media">
+                                        <div class="quote-icon-3d">"</div>
+                                            <p class="quote-text-3d">“We must reject not only the stereotypes that others hold of us, but also the stereotypes that we hold of ourselves.”</p>
+                                            <p class="quote-author-3d">— Shirley Chisholm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Giving Back -->
+                    <div class="carousel-3d-card" data-position="4" onclick="selectCard(this, 4)">
+                        <div class="card-3d-content">
+                            <div class="card-3d-collapsed">
+                                <div class="card-3d-icon">💝</div>
+                                <h3 class="card-3d-title">Giving Back</h3>
+                                <p class="card-3d-preview">Impact beyond the office</p>
+                            </div>
+                            <div class="card-3d-expanded">
+                                <button class="card-3d-close" onclick="event.stopPropagation(); collapseCard3D()">×</button>
+                                <div class="expanded-3d-layout">
+                                    <div class="expanded-3d-text">
+                                        <h3 class="expanded-3d-title">💝 Giving Back</h3>
+                                        <p>HackSoCal - an accessible highschool level hackathon event for beginners and experienced coders in the community</p>
+                                        <p>Learn to Code with Rosemead Library - teaching young kids the fundamentals of programming</p>
+                                    </div>
+                                    <div class="expanded-3d-media">
+                                        <div class="quote-card-3d">
+                                            <div class="quote-icon-3d">"</div>
+                                            <p class="quote-text-3d">"The young generation is our future and it is a responsibilty we have to empower them."/p>
+                                            <p class="quote-author-3d">— me!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-3d-controls" aria-label="Carousel navigation">
+                    <button class="carousel-3d-nav prev" type="button" onclick="rotateCarousel(-1)" aria-label="Move to left card">‹</button>
+                    <button class="carousel-3d-nav next" type="button" onclick="rotateCarousel(1)" aria-label="Move to right card">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Management Section -->
+        <section class="management-section">
+            <div class="section-badge">🏢 Executive Team</div>
+            
+            <h2 class="management-title">Meet the Management</h2>
+            <p class="management-subtitle">The visionary leaders who push for my sale to keep operations running at home</p>
+
+            <div class="managers-panels">
+                <!-- Cat Manager 1 -->
+                <div class="manager-panel">
+                    <div class="manager-photo-section">
+                        <img src="tofu.png" alt="Cat Manager 1" class="manager-photo">
+                    </div>
+                    <div class="manager-details">
+                        <div class="manager-header">
+                            <div>
+                                <h3 class="manager-name">Cat Name Here</h3>
+                                <p class="manager-role">CEO - Chief Eating Officer</p>
+                                <p class="manager-title-sub">Senior Vice Purr-sident</p>
+                            </div>
+                        </div>
+                        <p class="manager-bio">Responsible for enforcing 3am zoomies policy, optimizing treat distribution, and ensuring all cardboard boxes are thoroughly inspected. Known for hostile takeovers of warm laundry piles and strategic napping in inconvenient locations.</p>
+                        <div class="manager-stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">18</span>
+                                    <span class="stat-label">Hours Sleep/Day</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">∞</span>
+                                    <span class="stat-label">Treats Required</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Keyboard Supervision</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cat Manager 2 -->
+                <div class="manager-panel">
+                    <div class="manager-photo-section">
+                        <img src="peach.jpg" alt="Cat Manager 2" class="manager-photo">
+                    </div>
+                    <div class="manager-details">
+                        <div class="manager-header">
+                            <div>
+                                <h3 class="manager-name">Cat Name Here</h3>
+                                <p class="manager-role">CFO - Chief Feline Officer</p>
+                                <p class="manager-title-sub">Director of Nap Operations</p>
+                            </div>
+                        </div>
+                        <p class="manager-bio">Oversees all sunbeam allocation, manages the red dot portfolio, and conducts critical quality control on all furniture scratch-ability. Expert in motivational meowing at 5am and judging all life choices from elevated surfaces.</p>
+                        <div class="manager-stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">47</span>
+                                    <span class="stat-label">Toys Owned</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">2</span>
+                                    <span class="stat-label">Toys Actually Used</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-content">
+                                    <span class="stat-number">24/7</span>
+                                    <span class="stat-label">Judgmental Stares</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="management-disclaimer">
+                <p>* All executive compensation is paid in treats, chin scratches, and premium catnip. Equity packages include unlimited lap time and exclusive access to all cardboard boxes.</p>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const totalCards = 5;
+        const cards3d = document.querySelectorAll('.carousel-3d-card');
+
+        function updateCarousel3D() {
+            cards3d.forEach((card, index) => {
+                // Calculate relative position: how many steps away from center
+                // This creates a circular mapping where:
+                // 0 = center, 1 = right, 4 = left, 2 & 3 = hidden
+                let relativePos = (index - currentIndex + totalCards) % totalCards;
+                
+                // Map to carousel positions:
+                // If relativePos is 0, it's center (position 0)
+                // If relativePos is 1, it's right (position 1)
+                // If relativePos is 4, it's left (position 4)
+                // If relativePos is 2 or 3, they're hidden (positions 2 or 3)
+                
+                // For circular carousel, we need to handle wrapping:
+                // If relativePos > 2, wrap it to negative side
+                if (relativePos > 2) {
+                    relativePos = relativePos - totalCards;
+                }
+                
+                // Now map to actual position values:
+                // 0 -> 0 (center)
+                // 1 -> 1 (right)
+                // -1 -> 4 (left, which is position 4 in our CSS)
+                // 2 -> 2 (hidden right)
+                // -2 -> 3 (hidden left)
+                
+                let position;
+                if (relativePos === 0) {
+                    position = 0; // Center
+                } else if (relativePos === 1) {
+                    position = 1; // Right
+                } else if (relativePos === -1) {
+                    position = 4; // Left
+                } else if (relativePos === 2) {
+                    position = 2; // Hidden behind right
+                } else if (relativePos === -2) {
+                    position = 3; // Hidden behind left
+                } else {
+                    // Fallback (shouldn't happen with 5 cards)
+                    position = 2;
+                }
+                
+                card.setAttribute('data-position', position);
+            });
+        }
+
+        function rotateCarousel(direction) {
+            // Collapse any expanded cards first
+            cards3d.forEach(card => card.classList.remove('expanded-3d'));
+            
+            // Direction mapping:
+            //  1 = move to the card on the RIGHT (right card becomes center)
+            // -1 = move to the card on the LEFT  (left card becomes center)
+            currentIndex = (currentIndex + direction + totalCards) % totalCards;
+            updateCarousel3D();
+        }
+
+        function selectCard(card, cardIndex) {
+            const currentPosition = parseInt(card.getAttribute('data-position'));
+            
+            // If card is in center position, expand it
+            if (currentPosition === 0) {
+                if (!card.classList.contains('expanded-3d')) {
+                    // Collapse all other cards
+                    cards3d.forEach(c => c.classList.remove('expanded-3d'));
+                    // Expand this card
+                    card.classList.add('expanded-3d');
+                }
+            } else {
+                // If card is on the side, rotate to center it
+                rotateCarouselToIndex(cardIndex);
+            }
+        }
+
+        function rotateCarouselToIndex(targetIndex) {
+            // Collapse any expanded cards
+            cards3d.forEach(card => card.classList.remove('expanded-3d'));
+            
+            currentIndex = targetIndex;
+            updateCarousel3D();
+        }
+
+        function collapseCard3D() {
+            cards3d.forEach(card => card.classList.remove('expanded-3d'));
+        }
+
+        // Cloud animation
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                const xMove = (x - 0.5) * speed;
+                const yMove = (y - 0.5) * speed;
+                shape.style.transform = `translate(${xMove}px, ${yMove}px)`;
+            });
+        });
+
+        // Initialize carousel
+        updateCarousel3D();
+    </script>
+</body>
+</html>

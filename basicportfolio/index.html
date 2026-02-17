@@ -3,407 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Angela Dong</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --deepblue: #344979;
-            --periwinkle: #5d6da5;
-            --lavender: #9896bb;
-            --pale-lavender: #c6c6e8;
-            --blush: #f7e5eb;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Work Sans', sans-serif;
-            background: var(--blush);
-            color: var(--deepblue);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        .ribbon {
-            position: fixed;
-            left: -10px;
-            top: 100px;
-            background: var(--deepblue);
-            color: var(--blush);
-            padding: 0.75rem 1.5rem 0.75rem 1.25rem;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 600;
-            box-shadow: 4px 4px 15px rgba(52, 73, 121, 0.3);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 15px, 100% 100%, 0 100%);
-        }
-
-        .ribbon:hover {
-            background: var(--periwinkle);
-            left: 0;
-            box-shadow: 8px 6px 25px rgba(52, 73, 121, 0.4);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 50px rgba(52, 73, 121, 0.15);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--deepblue) 0%, var(--periwinkle) 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-
-        .content {
-            padding: 50px 40px;
-        }
-
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8em;
-            color: var(--deepblue);
-            margin-bottom: 20px;
-            font-weight: 700;
-            border-bottom: 3px solid var(--periwinkle);
-            padding-bottom: 10px;
-        }
-
-        .about-text {
-            color: var(--deepblue);
-            line-height: 1.8;
-            font-size: 1.05em;
-            opacity: 0.85;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .skill-item {
-            color: var(--deepblue);
-            padding: 12px 0;
-            font-size: 0.95em;
-            border-left: 3px solid var(--periwinkle);
-            padding-left: 15px;
-            opacity: 0.85;
-        }
-
-        .job {
-            margin-bottom: 20px;
-            padding: 25px;
-            border: 2px solid var(--pale-lavender);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .job:hover {
-            border-color: var(--periwinkle);
-            box-shadow: 0 4px 20px rgba(93, 109, 165, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .job.expanded {
-            border-color: var(--periwinkle);
-            box-shadow: 0 8px 30px rgba(93, 109, 165, 0.2);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-
-        .job-title {
-            font-size: 1.3em;
-            color: var(--deepblue);
-            font-weight: 700;
-        }
-
-        .job-date {
-            color: var(--periwinkle);
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-
-        .job-company {
-            font-size: 1.1em;
-            color: var(--periwinkle);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .job-description {
-            color: var(--deepblue);
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
-        .job-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            margin-top: 15px;
-        }
-
-        .job.expanded .job-details {
-            max-height: 1000px;
-        }
-
-        .job-details-content {
-            padding-top: 15px;
-            border-top: 1px solid var(--pale-lavender);
-        }
-
-        .job-details h4 {
-            color: var(--deepblue);
-            font-size: 1em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .job-details ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .job-details li {
-            color: var(--deepblue);
-            opacity: 0.85;
-            line-height: 1.7;
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .job-details li::before {
-            content: '•';
-            color: var(--periwinkle);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .expand-indicator {
-            display: inline-block;
-            margin-left: 10px;
-            color: var(--periwinkle);
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
-
-        .job.expanded .expand-indicator {
-            transform: rotate(180deg);
-        }
-
-        .project {
-            margin-bottom: 25px;
-            padding: 25px;
-            background: var(--blush);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .project:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(93, 109, 165, 0.15);
-        }
-
-        .project-header {
-            margin-bottom: 15px;
-        }
-
-        .project-title {
-            font-size: 1.3em;
-            color: var(--deepblue);
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .project-tech {
-            font-size: 0.85em;
-            color: var(--periwinkle);
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: var(--deepblue);
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--periwinkle);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--deepblue);
-        }
-
-        /* Vertical Timeline Navigation */
-        .timeline-nav {
-            position: fixed;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .timeline-nav::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--pale-lavender);
-            transform: translateX(-50%);
-        }
-
-        .nav-dot {
-            position: relative;
-            width: 12px;
-            height: 12px;
-            background: white;
-            border: 2px solid var(--pale-lavender);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-
-        .nav-dot:hover {
-            background: var(--periwinkle);
-            border-color: var(--periwinkle);
-            transform: scale(1.3);
-        }
-
-        .nav-dot.active {
-            background: var(--deepblue);
-            border-color: var(--deepblue);
-            transform: scale(1.5);
-        }
-
-        .nav-dot-label {
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            white-space: nowrap;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--deepblue);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            background: white;
-            padding: 5px 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(52, 73, 121, 0.1);
-        }
-
-        .nav-dot:hover .nav-dot-label {
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-nav {
-                display: none;
-            }
-
-            .ribbon {
-                font-size: 0.75rem;
-                padding: 0.6rem 1.25rem 0.6rem 1rem;
-                top: 80px;
-            }
-
-            .header {
-                padding: 40px 30px;
-            }
-
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .content {
-                padding: 40px 30px;
-            }
-
-            .section-title {
-                font-size: 1.5em;
-            }
-
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-
-            .job-header {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .job {
-                padding: 20px;
-            }
-
-            .project {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <a href="../index.html" class="ribbon">Back to the fun</a>
@@ -426,16 +30,16 @@
     
     <div class="container">
         <div class="header">
-            <h1>Your Name</h1>
-            <p>Professional Title / Role</p>
+            <h1>Angela Dong</h1>
+            <p>Product Manager</p>
         </div>
 
         <div class="content">
             <section class="section" id="about">
                 <h2 class="section-title">About Me</h2>
                 <p class="about-text">
-                    I am a passionate professional with extensive experience in [your field]. 
-                    Throughout my career, I have developed expertise in [key areas] and have 
+                    I am a passionate professional with extensive experience in platform and AI Product Management. 
+                    Throughout my career, I have worked in various startups at different stages and have 
                     consistently delivered results that drive business growth and innovation. 
                     I thrive in collaborative environments and am committed to continuous learning 
                     and professional development.
@@ -445,14 +49,14 @@
             <section class="section" id="skills">
                 <h2 class="section-title">Skills</h2>
                 <div class="skills-list">
-                    <div class="skill-item">JavaScript & TypeScript</div>
                     <div class="skill-item">Python & Data Analysis</div>
-                    <div class="skill-item">React & Frontend Development</div>
+                    <div class="skill-item">HTML & CSS</div>
                     <div class="skill-item">Project Management</div>
                     <div class="skill-item">Team Leadership</div>
                     <div class="skill-item">Strategic Planning</div>
-                    <div class="skill-item">System Architecture</div>
                     <div class="skill-item">Agile Methodologies</div>
+                    <div class="skill-item">Figma and Lovable</div>
+                    <div class="skill-item">Linear and Productlane</div>
                 </div>
             </section>
 
@@ -462,30 +66,30 @@
                 <div class="job" onclick="toggleJob(this)">
                     <div class="job-header">
                         <div class="job-title">
-                            Senior Position Title
+                            Product Manager
                             <span class="expand-indicator">▼</span>
                         </div>
-                        <div class="job-date">2023 - Present</div>
+                        <div class="job-date">2025 - 2026</div>
                     </div>
-                    <div class="job-company">Company Name</div>
+                    <div class="job-company">Pareto.AI</div>
                     <p class="job-description">
-                        Led cross-functional teams to deliver high-impact projects. Developed and 
-                        implemented strategies that resulted in significant improvements in efficiency 
+                        Led cross-functional teams to deliver high-impact platform improvements. Developed and 
+                        implemented new AI-assisted features that resulted in significant improvements in efficiency 
                         and outcomes.
                     </p>
                     <div class="job-details">
                         <div class="job-details-content">
                             <h4>Key Responsibilities:</h4>
                             <ul>
-                                <li>Managed a team of 10+ developers and designers</li>
-                                <li>Architected and implemented scalable solutions serving 100K+ users</li>
-                                <li>Led strategic planning and roadmap development</li>
+                                <li>Improved user experience on the platform that had fragmented user experience due to rapid feature additions and technical debt.</li>
+                                <li>Architected and implemented solutions serving 5k+ users</li>
+                                <li>Led strategic planning and roadmap development for new initiative focused on internal expert sourcing for new projects.</li>
                             </ul>
                             <h4>Achievements:</h4>
                             <ul>
-                                <li>Increased system performance by 40% through optimization initiatives</li>
-                                <li>Successfully delivered 5 major product launches on schedule</li>
-                                <li>Reduced operational costs by 25% through process improvements</li>
+                                <li>Successfully delivered a redesigned UI that improved user satisfaction scores by 92% and reduced reported friction points by 62%.</li>
+                                <li>Led the development of a new AI-assisted tool that reduced manual effort by 65%.</li>
+                                <li>Independently created an interactive demo to improve worker onboarding flow.</li>
                             </ul>
                         </div>
                     </div>
@@ -494,29 +98,28 @@
                 <div class="job" onclick="toggleJob(this)">
                     <div class="job-header">
                         <div class="job-title">
-                            Mid-Level Position Title
+                            Product Manager, AI Research Analyst
                             <span class="expand-indicator">▼</span>
                         </div>
-                        <div class="job-date">2020 - 2023</div>
+                        <div class="job-date">2024 - 2025</div>
                     </div>
-                    <div class="job-company">Previous Company Name</div>
+                    <div class="job-company">Exia Labs</div>
                     <p class="job-description">
-                        Managed key projects and contributed to product development initiatives. 
-                        Collaborated with stakeholders to define requirements and deliver solutions.
+                        Joined the early-stage startup as a team of 5 initially focused on the development of an AI chatbot for military use. Wore many hats throughout my time here as social media manager, page engagement manager but eventually settled fully into product management. 
                     </p>
                     <div class="job-details">
                         <div class="job-details-content">
                             <h4>Key Responsibilities:</h4>
                             <ul>
-                                <li>Developed and maintained core product features</li>
-                                <li>Collaborated with product managers and designers on UX improvements</li>
-                                <li>Mentored junior team members and conducted code reviews</li>
+                                <li>Led the product roadmap planning for an in-development video game based on popular hit board game, 'Mr.President'</li>
+                                <li>Managed the dataset provided for the LLM chatbot focused on geopolitical and military analysis.</li>
+                                <li>Delivered weekly research briefs and performance reports to executive leadership and stakeholders.</li>
                             </ul>
                             <h4>Achievements:</h4>
                             <ul>
-                                <li>Built new features that increased user engagement by 30%</li>
-                                <li>Improved development workflow reducing deployment time by 50%</li>
-                                <li>Contributed to open source projects adopted by the community</li>
+                                <li>Managed the Steam store page, increasing user engagement 7-fold by iterating on visuals, copy, and feature updates.</li>
+                                <li>Drove two early-stage AI projects from ideation to launch, with a focus on rapid prototyping and iterative development.</li>
+                                <li>Procured and cleaned a large-scale dataset of 3000+ files for our initial AI model training.</li>
                             </ul>
                         </div>
                     </div>
@@ -525,29 +128,28 @@
                 <div class="job" onclick="toggleJob(this)">
                     <div class="job-header">
                         <div class="job-title">
-                            Junior Position Title
+                            Associate Project Manager
                             <span class="expand-indicator">▼</span>
                         </div>
                         <div class="job-date">2018 - 2020</div>
                     </div>
-                    <div class="job-company">First Company Name</div>
+                    <div class="job-company">Intertek PSI</div>
                     <p class="job-description">
-                        Started professional journey by supporting various projects and learning 
-                        core competencies. Developed foundational skills in relevant areas.
+                        I managed project planning and execution for various new and ongoing projects in a fast-paced environment at an environmental consulting company.
                     </p>
                     <div class="job-details">
                         <div class="job-details-content">
                             <h4>Key Responsibilities:</h4>
                             <ul>
-                                <li>Implemented features and bug fixes across multiple projects</li>
-                                <li>Participated in agile ceremonies and sprint planning</li>
-                                <li>Collaborated with senior developers on technical implementations</li>
+                                <li>Led the budget tracking, subcontractor coordination, and client communication which helped maintain project momentum and transparency.</li>
+                                <li>Managed technical report QA/QC and submission timelines for infrastructure and environmental projects.</li>
+                                <li>Updated old outdated workflows and introduced new tools to improve efficiency and accuracy.</li>
                             </ul>
                             <h4>Achievements:</h4>
                             <ul>
-                                <li>Quickly ramped up on tech stack and made immediate contributions</li>
-                                <li>Received recognition for code quality and attention to detail</li>
-                                <li>Built strong foundation in software development best practices</li>
+                                <li>Revamped disorganized AP workflows, improving efficiency by 40% and reducing errors in financial reporting.</li>
+                                <li>Implemented new project tracking tools that streamlined communication and reduced project delays by 25%.</li>
+                                <li>Developed standardized templates for technical reports, increasing consistency and reducing review cycles by 30%.</li>
                             </ul>
                         </div>
                     </div>
@@ -559,39 +161,32 @@
                 
                 <div class="project">
                     <div class="project-header">
-                        <h3 class="project-title">Project Name One</h3>
-                        <p class="project-tech">React, Node.js, PostgreSQL</p>
+                        <h3 class="project-title">Mr.President</h3>
+                        <p class="project-tech">Product Manager, Social Media Manager, Community Manager</p>
                     </div>
                     <p class="project-description">
-                        A full-stack application that helps users accomplish [specific goal]. 
-                        Implemented real-time features and responsive design to provide seamless 
-                        user experience across devices.
+                        The digital adaptation of the tabletop game 'Mr.President', guiding it from early conception to public-facing Steam launch. Collaborated cross functionally with art, engineering, marketing, and leadership teams to ensure brand consistency, platform optimization, and community engagement. Played a key role in shaping the game's presentation, discoverability, and communication strategy.
                     </p>
-                    <a href="#" class="project-link">View Project →</a>
                 </div>
 
                 <div class="project">
                     <div class="project-header">
-                        <h3 class="project-title">Project Name Two</h3>
-                        <p class="project-tech">Python, Machine Learning, Data Visualization</p>
+                        <h3 class="project-title">Hack SoCal</h3>
+                        <p class="project-tech">Sponsorship & Operations Coordinator</p>
                     </div>
                     <p class="project-description">
-                        Data analysis and visualization tool that processes large datasets and 
-                        generates actionable insights. Built with scalability and performance in mind.
+                        Coordinated with sponsors and managed logistics for Hack SoCal, a hackathon event targetting beginner and experienced coders in our community. Successfully secured sponsorships from leading tech companies and ensured smooth event execution, contributing to a memorable experience.
                     </p>
-                    <a href="#" class="project-link">View Project →</a>
                 </div>
 
                 <div class="project">
                     <div class="project-header">
-                        <h3 class="project-title">Project Name Three</h3>
-                        <p class="project-tech">TypeScript, Next.js, Tailwind CSS</p>
+                        <h3 class="project-title">Whispering Moss</h3>
+                        <p class="project-tech">Producer</p>
                     </div>
                     <p class="project-description">
-                        Modern web application showcasing best practices in frontend development. 
-                        Features include server-side rendering, optimized performance, and accessibility.
+                        Joined an ongoing team working on a Metroidvania game as a producer creating a product backlog using a GDD that was previously unorganized and unstructured. Worked with the team to implement a more structured workflow and project management system to improve communication and efficiency.
                     </p>
-                    <a href="#" class="project-link">View Project →</a>
                 </div>
             </section>
         </div>
